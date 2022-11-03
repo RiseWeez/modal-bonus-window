@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bonuses Window</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div aria-expanded="true" data-model="modal-offer-discount" class="v--modal-overlay scrollable">
+    <div role="dialog" aria-modal="true" class="v--modal-box v--modal"
+        style="max-width: 43.2rem; margin: 0px auto; height: auto;">
+        <div class="modal-body">
+            <header class="modal-body__head">
+                <div class="modal-body__title">Оплата бонусами</div>
+                <span class="close">&times;</span>
+            </header>
+                <p class="discount-modal__text">При купівлі цього товару ви можете використати накопичені бонуси для отримання знижки, але не більше
+                    тієї, що встановив продавець.</p>
+
+            <div class="discount-modal__registration">
+                <h5 class="discount-modal__registration-title">Зареєструйтесь - <span>отримайте 50 бонусів</span></h5>
+                <button class="button__cn">Реєстрація користувача</button>
+            </div>        
+            <div class="discount-modal__list">
+                <span class="discount-modal__name">Ваш баланс:</span>
+                <span class="discount-modal__price">
+                    0
+                    <span class="icon-synthetic"></span>
+                    <span class="discount-modal__price-currency">
+                        (0
+                        <sup class="discount-modal__currency">ГРН</sup>
+                        )
+                    </span>
+                </span>
+                <span class="discount-modal__name">Макс. допустима знижка:</span>
+                <span class="discount-modal__price">
+                    12 343
+                    <sup class="discount-modal__currency">ГРН</sup>
+                </span>
+                <span class="discount-modal__name">Ціна товару:</span>
+                <span class="discount-modal__price">
+                    12 342
+                    <sup class="discount-modal__currency">ГРН</sup>
+                </span>
+            </div>
+            <p class="discount-modal__selected">
+                <span class="discount-modal__name">Обрана знижка:</span>
+                <strong class="">0
+                    <sup class="discount-modal__currency">ГРН</sup>
+                </strong>
+            </p>
+            <div class="slider">
+                <div class="progress"></div>
+              </div>
+              <div class="range-input">
+                <input type="range" class="range-min" min="0" max="10000" value="0" step="1">
+              </div>
+              <p class="discount-modal_total">
+                <span class="discount-modal__total-title">Всього до сплати: </span>
+                <strong class="discount-modal__total-price">12 321
+                <sup class="discount-modal__currency">ГРН</sup>
+                +
+                <span> 0 </span>
+            </strong>
+              </p>
+            <button class="buy-button">Купити (без знижки)</button>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
