@@ -9,6 +9,25 @@
 
 <body>
     <div aria-expanded="true" data-model="modal-offer-discount" class="v--modal-overlay scrollable">
+
+        <form id="bonusValueInputForm">
+            <label>Кількість бонусів
+            <input type="text" id="bonusValueInput" onchange="changeBonusValue()"> 
+        </label>
+        </form>
+        
+        <form id="maxDiscountInputForm">
+            <label>Макс. Знижка
+            <input type="text" id="maxDiscountInput" onchange="changeMaxDiscount()">
+        </label>
+        </form>
+
+        <form id="itemPriceInputForm">
+            <label>Ціна товару
+            <input type="text" id="itemPriceInput" onchange="changeItemPrice()">
+        </label>
+        </form>
+
         <div role="dialog" aria-modal="true" class="v--modal-box v--modal"
             style="max-width: 43.2rem; margin: 0px auto; height: auto;">
             <div class="modal-body">
@@ -23,7 +42,9 @@
                 <div class="discount-modal__registration">
                     <h5 class="discount-modal__registration-title">Зареєструйтесь - <span>отримайте 50 бонусів</span>
                     </h5>
-                    <button class="button__cn">Реєстрація користувача</button>
+                    <button class="button__cn"
+                        onclick="window.location.href='https://synthetic.ua/auth/register';">Реєстрація
+                        користувача</button>
                 </div>
                 <div class="discount-modal__list">
                     <span class="discount-modal__name">Ваш баланс:</span>
@@ -38,37 +59,32 @@
                     </span>
                     <span class="discount-modal__name">Макс. допустима знижка:</span>
                     <span class="discount-modal__price">
-                        9 999
+                        <span id="maxDiscount"></span>
                         <sup class="discount-modal__currency">ГРН</sup>
                     </span>
                     <span class="discount-modal__name">Ціна товару:</span>
                     <span class="discount-modal__price">
-                        10 000
+                        <span id="itemPrice"></span>
                         <sup class="discount-modal__currency">ГРН</sup>
                     </span>
                 </div>
                 <p class="discount-modal__selected">
                     <span class="discount-modal__name">Обрана знижка:</span>
                     <strong class="">
-                        <span id="rangeValue">0</span>
-                        <!-- <output id="rangevalue">0</output> -->
+                        <span id="selectedDiscount">0</span>
                         <sup class="discount-modal__currency">ГРН</sup>
                     </strong>
                 </p>
                 <div class="slider" id="slider">
-                    <Input class="range" type="range" name "" value="0" min="0" max="9999"
-                        onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></Input>
-
-                    <!-- <input type="range" value="0" min="0" max="25000" oninput="rangevalue.value=value"/> -->
-                    <!-- <output id="rangevalue">70</output> -->
-
+                    <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="10000"
+                        onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
                 </div>
                 <p class="discount-modal_total">
                     <span class="discount-modal__total-title">Всього до сплати: </span>
-                    <strong class="discount-modal__total-price"><span id="finalPrice">9 999</span>
+                    <strong class="discount-modal__total-price"><span id="finalPrice"></span>
                         <sup class="discount-modal__currency">ГРН</sup>
                         +
-                        <span id="rangeValue1">0</span>
+                        <span id="discountBonusValue">0</span>
                     </strong>
                 </p>
                 <button class="buy-button"><span class="icon-cart"> </span>Купити (без знижки)</button>
