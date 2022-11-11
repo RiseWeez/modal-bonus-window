@@ -10,21 +10,15 @@
 <body>
     <div aria-expanded="true" data-model="modal-offer-discount" class="v--modal-overlay scrollable">
 
-        <form id="bonusValueInputForm">
+        <form id="valueInputForm" name="valueInputForm">
             <label>Кількість бонусів
-            <input type="text" id="bonusValueInput" onchange="changeBonusValue()"> 
+            <input type="number" id="bonusValueInput" name="bonusValueInput" value="0"> 
         </label>
-        </form>
-        
-        <form id="maxDiscountInputForm">
             <label>Макс. Знижка
-            <input type="text" id="maxDiscountInput" onchange="changeMaxDiscount()">
+            <input type="number" id="maxDiscountInput" name="maxDiscountInput">
         </label>
-        </form>
-
-        <form id="itemPriceInputForm">
             <label>Ціна товару
-            <input type="text" id="itemPriceInput" onchange="changeItemPrice()">
+            <input type="number" id="itemPriceInput" name="itemPriceInput">
         </label>
         </form>
 
@@ -76,7 +70,7 @@
                     </strong>
                 </p>
                 <div class="slider" id="slider">
-                    <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="10000"
+                    <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="999999"
                         onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
                 </div>
                 <p class="discount-modal_total">
