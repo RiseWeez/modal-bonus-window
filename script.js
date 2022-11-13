@@ -18,8 +18,10 @@ itemPriceInput.oninput = function changeItemPrice() {
 };
 
 maxDiscountInput.onchange = function changeMaxDiscount() {
-  let maxDiscountInput = document.getElementById('maxDiscountInput').value;
-  document.getElementById('maxDiscount').innerHTML = maxDiscountInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  let maxDiscountInput = (document.getElementById('maxDiscountInput').value / 100) * itemPrice;
+  document.getElementById('maxDiscount').innerHTML = Math.floor(maxDiscountInput)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
   let target = document.querySelectorAll('input[type="range"]')[0];
   target.value = bonusValue;
@@ -32,7 +34,8 @@ maxDiscountInput.onchange = function changeMaxDiscount() {
 bonusValueInput.onchange = function changeBonusValue() {
   let bonusValueInput = document.getElementById('bonusValueInput').value;
   document.getElementById('bonusValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  bonusValue = currencyValue;
+  document.getElementById('currencyValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  currencyValue = bonusValue;
   bonusValue = +bonusValueInput;
 
   let target = document.querySelectorAll('input[type="range"]')[0];
