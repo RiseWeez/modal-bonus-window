@@ -5,26 +5,46 @@ let maxDiscount = 9999;
 let itemPrice = 10000;
 let currencyValue = bonusValue;
 
+document.getElementById('bonusValue').innerHTML = bonusValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+document.getElementById('currencyValue').innerHTML = currencyValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
 itemPriceInput.oninput = function changeItemPrice() {
-  let itemPriceInput = document.getElementById("itemPriceInput").value;
+  let itemPriceInput = document.getElementById('itemPriceInput').value;
   document.getElementById('itemPrice').innerHTML = itemPriceInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  itemPrice = itemPriceInput;
   console.log(isNaN(itemPriceInput));
-}
+};
 
-maxDiscountInput.oninput = function changeMaxDiscount() {
-  let maxDiscountInput = document.getElementById("maxDiscountInput").value;
+maxDiscountInput.onchange = function changeMaxDiscount() {
+  let maxDiscountInput = document.getElementById('maxDiscountInput').value;
   document.getElementById('maxDiscount').innerHTML = maxDiscountInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-}
 
-bonusValueInput.oninput = function changeBonusValue() {
-  let bonusValueInput = document.getElementById("bonusValueInput").value;
+  let target = document.querySelectorAll('input[type="range"]')[0];
+  target.value = bonusValue;
+  let min = target.min;
+  target.max = maxDiscountInput;
+
+  target.style.backgroundSize = ((bonusValue - min) * 100) / (maxDiscountInput - min) + '% 100%';
+};
+
+bonusValueInput.onchange = function changeBonusValue() {
+  let bonusValueInput = document.getElementById('bonusValueInput').value;
   document.getElementById('bonusValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  bonusValue = currencyValue
-  console.log(isNaN(bonusValueInput));
-}
+  bonusValue = currencyValue;
+  bonusValue = +bonusValueInput;
+
+  let target = document.querySelectorAll('input[type="range"]')[0];
+  target.value = bonusValueInput;
+  let min = target.min;
+  target.max = maxDiscount;
+
+  target.style.backgroundSize = ((bonusValueInput - min) * 100) / (maxDiscount - min) + '% 100%';
+};
 
 function rangeSlide(value) {
-  const priceDiff = itemPrice - value
+  const priceDiff = itemPrice - value;
   document.getElementById('selectedDiscount').innerHTML = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   document.getElementById('discountBonusValue').innerHTML = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   document.getElementById('finalPrice').innerHTML = priceDiff.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -36,14 +56,7 @@ function rangeSlide(value) {
     document.getElementById('selectedDiscount').style.color = 'red';
     document.getElementById('discountBonusValue').style.color = 'red';
   }
-  // console.log(typeof itemPriceInput);
 }
-
-document.getElementById('bonusValue').innerHTML = bonusValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-document.getElementById('currencyValue').innerHTML = currencyValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
 
 // Input range limit
 
@@ -54,15 +67,11 @@ input.addEventListener('change', () => {
 });
 
 // Background
-const target = document.querySelectorAll('input[type="range"]')[0];
-target.value = bonusValue;
-const min = target.min;
-target.max = maxDiscount;
+window.onload = function setSliderRange() {
+  let target = document.querySelectorAll('input[type="range"]')[0];
+  target.value = bonusValue;
+  let min = target.min;
+  target.max = maxDiscount;
 
-target.style.backgroundSize = ((bonusValue - min) * 100) / (maxDiscount - min) + '% 100%';
-
-
-
-
-
-
+  target.style.backgroundSize = ((bonusValue - min) * 100) / (maxDiscount - min) + '% 100%';
+};
